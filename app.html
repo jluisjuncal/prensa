@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="es" ng-app="prensa">
+
+<head>
+	<meta charset="utf-8">
+	<title>Prensa</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--Responsive-->
+	<link rel="stylesheet" type="text/css" href="./css/jquery.tagsinput.css">
+	<link rel="stylesheet" type="text/css" href="./css/app.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular.min.js"></script>
+	<script src="./app.js"></script>
+	<script src="./appCtrl.js"></script>
+	<link rel="shortcut icon" href="favicon.png" type="image/png" />
+
+</head>
+
+<body ng-controller="Controller as ctrl">
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+
+			<ul class="nav navbar-nav">
+				<li class="active">
+					<a href="" ng-click="ctrl.setType('landing')">Inicio</a>
+				</li>
+				<li>
+					<a href="" ng-click="ctrl.setType('national')">Nacional</a>
+				</li>
+				<li>
+					<a href="" ng-click="ctrl.setType('magazine')">Revistas</a>
+				</li>
+				<li>
+					<a href="" ng-click="ctrl.setType('digital')">Digitales</a>
+				</li>
+				<li>
+					<a href="" ng-click="ctrl.setType('sport')">Deportivos</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div id="app" class="container">
+		<div class="media col-xs-12 col-sm-4 col-md-3" ng-repeat="newspaper in ctrl.newspapers | filter: ctrl.myFilter(ctrl.type)" style="margin-top: 15px;">
+			<div class="media-middle thumbnail">
+				<a ng-href="{{newspaper.url}}">
+					<img class="media-object" ng-src="{{newspaper.image}}" alt="..." style="width: 228px; height: 160px">
+				</a>
+			</div>
+			<div class="media-body">
+				<h4 class="media-heading"><a ng-href="{{newspaper.url}}">{{newspaper.name}}</a></h4>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
