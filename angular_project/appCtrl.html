@@ -1,0 +1,36 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+
+        <ul class="nav navbar-nav">
+            <!--ng-class is a angular directive that allows to to dynamically set CSS classes on an HTML element by databinding an expression -->
+            <li ng-class="{active: ctrl.isActive('landing')}">
+                <!--ui-sref is a ui-router directive that allows to redirect to a particular state defined on app.js-->
+                <a ui-sref="landing">Inicio</a>
+            </li>
+            <li ng-class="{active: ctrl.isActive('national')}">
+                <a ui-sref="national">Nacional</a>
+            </li>
+            <li ng-class="{active: ctrl.isActive('magazine')}">
+                <a ui-sref="magazine">Revistas</a>
+            </li>
+            <li ng-class="{active: ctrl.isActive('digital')}">
+                <a ui-sref="digital">Digitales</a>
+            </li>
+            <li ng-class="{active: ctrl.isActive('sport')}">
+                <a ui-sref="sport">Deportivos</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div id="app" class="container">
+    <div class="media col-xs-12 col-sm-4 col-md-3" ng-repeat="newspaper in ctrl.newspapers | filter: ctrl.myFilter(ctrl.type)" style="margin-top: 15px;">
+        <div class="media-middle thumbnail">
+            <a ng-href="{{newspaper.url}}">
+                <img class="media-object" ng-src="{{newspaper.image}}" alt="..." style="width: 228px; height: 160px">
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading"><a ng-href="{{newspaper.url}}">{{newspaper.name}}</a></h4>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 (function () {
     // col-xs-12 col-sm-4 col-md-4
-    function controller() {
-        this.type = 'landing';
+    function controller($stateParams,$state) {
+        this.type = $state.current.name;
         this.newspapers = [
             {
                 name: 'Faro de Vigo',
@@ -175,6 +175,10 @@
                 type: ['magazine']
             }
         ];
+        
+        this.isActive = function(page){
+            return page === this.type;
+        }
 
         this.myFilter = function (type) {
             return function (item) {
@@ -187,6 +191,7 @@
         }
 
     }
+
     angular.module('prensa').controller('Controller', controller);
 
 } ());
