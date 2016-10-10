@@ -1,7 +1,7 @@
 angular.module('prensa', ['ui.router']);
 
 angular.module('prensa').config(
-	function routeConfig($stateProvider) {
+	function routeConfig($stateProvider, $urlRouterProvider) {
 		$stateProvider
 			.state('landing', {
 				url: '/',
@@ -32,5 +32,6 @@ angular.module('prensa').config(
 				controller: 'Controller as ctrl',
 				templateUrl: 'appCtrl.html'
 			});
+		$urlRouterProvider.otherwise('/');
 	}
 );

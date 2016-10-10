@@ -40,3 +40,4 @@ app.get('/*', function (req, res) {
 
 // Listening port
 app.listen(3000);
+console.log('listening on PORT:', 3000)
